@@ -15,12 +15,15 @@ class ReusableButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        // backgroundColor: Color(#FF6C3BEF),
+      ),
         onPressed: onPressed,
         child: Row(
           children: [
-            
+            Text("fsfsf")
           ],
         )
-    )
+    );
   }
 }
