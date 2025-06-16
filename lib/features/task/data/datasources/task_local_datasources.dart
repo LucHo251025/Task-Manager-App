@@ -1,6 +1,7 @@
 import '../models/task_groud_model.dart';
-
+import '../models/task_model.dart';
 class TaskLocalDataSource {
+
   Future<List<TaskGroupModel>> getTaskGroups() async {
     await Future.delayed(const Duration(milliseconds: 300));
     return [
@@ -20,4 +21,9 @@ class TaskLocalDataSource {
       ),
     ];
   }
+
+  // Future<TaskModel> getTaskGroupById(String id) async {
+  //   await Future.delayed(const Duration(milliseconds: 300));
+  //
+  // }
 }
