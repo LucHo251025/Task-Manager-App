@@ -7,15 +7,17 @@ class TaskGroupModel extends TaskGroupEntity {
     required super.totalTasks,
     required super.completedTasks,
     required super.icon,
+    required super.iconColor,
   });
 
-  factory TaskGroupModel.fromJson(Map<String, dynamic> json ){
+  factory TaskGroupModel.fromJson(Map<String, dynamic> json) {
     return TaskGroupModel(
         id: json['id'],
         name: json['name'],
         totalTasks: json['totalTasks'],
         completedTasks: json['completedTasks'],
-        icon: json['icon']);
+        icon: json['icon'],
+        iconColor: json['iconColor']);
   }
 
   Map<String, dynamic> toJson() {
@@ -25,7 +27,7 @@ class TaskGroupModel extends TaskGroupEntity {
       'totalTasks': totalTasks,
       'completedTasks': completedTasks,
       'icon': icon,
+      'iconColor': iconColor,
     };
   }
-
 }
