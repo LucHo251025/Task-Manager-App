@@ -104,8 +104,9 @@ class _SelectedTaskGroupCardState extends State<SelectedTaskGroupCard> {
                   offset: Offset(0, 2),
                 ),
               ],
+
             ),
-            child: Column(
+            child:  Column(
               children: widget.groups
                   .where((g) => g != selected)
                   .map((group) => ListTile(
@@ -123,6 +124,7 @@ class _SelectedTaskGroupCardState extends State<SelectedTaskGroupCard> {
                         onTap: () => _selectGroup(group),
                       ))
                   .toList(),
+
             ),
           )
       ],

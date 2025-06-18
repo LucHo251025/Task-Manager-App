@@ -5,6 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:task_manager_app/features/task/presentation/widgets/reusable_button.dart';
 import 'package:task_manager_app/features/task/presentation/widgets/date_card.dart';
 import 'package:task_manager_app/features/task/presentation/widgets/selected_task_group_card.dart';
+import 'package:task_manager_app/features/task/presentation/widgets/custom_textfield.dart';
 
 void main() {
   runApp(const MyApp());
@@ -91,7 +92,13 @@ class MyApp extends StatelessWidget {
                 onGroupSelected: (group) {
                   print("Selected group: ${group.name}");
                 },
-              )
+              ),
+              SizedBox(
+                height: 20,
+              ),
+
+              CustomTextField()
+
             ],
           ))),
     );
