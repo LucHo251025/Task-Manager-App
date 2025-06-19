@@ -8,6 +8,7 @@ class ProjectEntity {
   final DateTime startDate;
   final DateTime endDate;
   final List<TaskEntity> tasks;
+  final String status;
 
   ProjectEntity({
     required this.id,
@@ -17,5 +18,6 @@ class ProjectEntity {
     required this.startDate,
     required this.endDate,
     required this.tasks,
+    required this.status,
   });
 }
