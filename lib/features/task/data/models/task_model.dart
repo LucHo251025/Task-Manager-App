@@ -6,7 +6,8 @@ class TaskModel extends TaskEntity {
     required super.projectId,
     required super.title,
     required super.status,
-    required super.dateTime,
+    required super.startDate,
+    required super.endDate,
   });
 
   factory TaskModel.fromJson(Map<String, dynamic> json) {
@@ -15,7 +16,8 @@ class TaskModel extends TaskEntity {
       projectId: json['projectId'],
       title: json['title'],
       status: json['status'],
-      dateTime: DateTime.parse(json['dateTime']),
+      startDate: DateTime.parse(json['startDate']),
+      endDate:  DateTime.parse(json['endDate']),
     );
   }
 
@@ -25,7 +27,8 @@ class TaskModel extends TaskEntity {
       'projectId': projectId,
       'title': title,
       'status': status,
-      'dateTime': dateTime.toIso8601String(),
+      'startDate': startDate.toIso8601String(),
+      'endDate': endDate.toIso8601String(),
     };
   }
 }

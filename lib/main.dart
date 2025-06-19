@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:task_manager_app/features/task/domain/entities/task_group_entity.dart';
-import 'package:task_manager_app/features/task/presentation/pages/add_task_screen.dart';
+import 'package:task_manager_app/features/task/presentation/pages/add_project_screen.dart';
 import 'package:task_manager_app/features/task/presentation/widgets/select_date.dart';
 import 'package:task_manager_app/features/task/presentation/widgets/task_group_card.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -22,15 +22,28 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: Scaffold(
-          backgroundColor: Colors.white, // hoặc màu khác bạn muốn
-          body: const AddTaskScreen(),
-      )
-    );
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primaryColor: Color(0xFF7A3FFF), // Màu tím đậm chính
+          scaffoldBackgroundColor: Colors.white,
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+        ),
+        home: Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  Colors.white,
+                  Color(0xFFF8F5FF),
+                  Color(0xFFFFF7E9),
+                ],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+              ),
+            ),
+            child: Scaffold(
+              backgroundColor: Colors.transparent, // hoặc màu khác bạn muốn
+              body: const AddProjectScreen(),
+            )));
   }
 }

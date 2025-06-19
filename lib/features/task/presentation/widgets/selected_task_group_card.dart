@@ -40,7 +40,7 @@ class _SelectedTaskGroupCardState extends State<SelectedTaskGroupCard> {
         GestureDetector(
           onTap: () => setState(() => isExpanded = !isExpanded),
           child: Container(
-            margin: const EdgeInsets.all(12),
+            margin: const EdgeInsets.all(2),
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
             decoration: BoxDecoration(
               color: Colors.white,
@@ -92,7 +92,7 @@ class _SelectedTaskGroupCardState extends State<SelectedTaskGroupCard> {
         ),
         if (isExpanded)
           Container(
-            margin: const EdgeInsets.symmetric(horizontal: 16),
+            margin: const EdgeInsets.symmetric(vertical: 10),
             padding: const EdgeInsets.symmetric(vertical: 8),
             decoration: BoxDecoration(
               color: Colors.white,

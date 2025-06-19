@@ -18,9 +18,24 @@ class _DescriptionTextFieldState extends State<DescriptionTextField> {
   final _textController = TextEditingController();
   String _inputText = '';
   @override
+  void initState() {
+    super.initState();
+    _textController.addListener(() {
+      setState(() {
+        _inputText = _textController.text;
+      }); // cập nhật UI khi nội dung thay đổi
+    });
+  }
+
+  @override
+  void dispose() {
+    _textController.dispose();
+    super.dispose();
+  }
+  @override
   Widget build(BuildContext context) {
     return Container(
-        margin: const EdgeInsets.all(12),
+        margin: const EdgeInsets.all(2),
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         decoration:  BoxDecoration(
           color: Colors.white,
@@ -34,6 +49,7 @@ class _DescriptionTextFieldState extends State<DescriptionTextField> {
           ],
         ),
         child: TextField(
+          maxLines: 5,
           controller: _textController,
           onChanged: (value) {
             setState(() {
@@ -41,12 +57,17 @@ class _DescriptionTextFieldState extends State<DescriptionTextField> {
             });
           },
           decoration: InputDecoration(
-            suffixIcon: IconButton(
+            alignLabelWithHint: true,
+            suffixIcon: _inputText.isNotEmpty ?
+            IconButton(
               onPressed: (){
                 _textController.clear();
+                setState(() {
+                  _inputText = '';
+                });
               },
               icon: Icon(Icons.clear),
-            ),
+            ): null,
             labelText: "Description",
             labelStyle: TextStyle(
               color: Colors.grey[600],
@@ -54,7 +75,7 @@ class _DescriptionTextFieldState extends State<DescriptionTextField> {
             ),
             border: InputBorder.none,
             hintText: 'Enter text here',
-            hintStyle: TextStyle(
+            floatingLabelBehavior: FloatingLabelBehavior.always,             hintStyle: TextStyle(
                 fontSize: 16,
                 color: Colors.grey[600]
             ),
@@ -65,6 +86,7 @@ class _DescriptionTextFieldState extends State<DescriptionTextField> {
             fontSize: 16,
           ),
 
+          keyboardType: TextInputType.text,
         )
     );
   }

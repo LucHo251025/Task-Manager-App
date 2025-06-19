@@ -1,11 +1,12 @@
+import 'package:task_manager_app/features/task/data/models/project_model.dart';
+
 import '../../domain/entities/task_group_entity.dart';
 
 class TaskGroupModel extends TaskGroupEntity {
   TaskGroupModel({
     required super.id,
     required super.name,
-    required super.totalTasks,
-    required super.completedTasks,
+    required super.projects,
     required super.icon,
     required super.iconColor,
   });
@@ -14,9 +15,10 @@ class TaskGroupModel extends TaskGroupEntity {
     return TaskGroupModel(
         id: json['id'],
         name: json['name'],
-        totalTasks: json['totalTasks'],
-        completedTasks: json['completedTasks'],
         icon: json['icon'],
+        projects: (json['projects'] as List)
+            .map((project) => ProjectModel.fromJson(project))
+            .toList(),
         iconColor: json['iconColor']);
   }
 
@@ -24,8 +26,7 @@ class TaskGroupModel extends TaskGroupEntity {
     return {
       'id': id,
       'name': name,
-      'totalTasks': totalTasks,
-      'completedTasks': completedTasks,
+      'projects': projects.map((project) => (project as ProjectModel).toJson()).toList(),
       'icon': icon,
       'iconColor': iconColor,
     };

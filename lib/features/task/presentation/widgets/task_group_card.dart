@@ -50,17 +50,14 @@ class TaskGroupCard extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 4),
-                  Text(
-                    '${group.completedTasks} / ${group.totalTasks} tasks completed',
-                    style: TextStyle(color: Colors.grey[600]),
-                  ),
+
                 ],
               ),
             ),
 
             SizedBox(width: 16),
 
-            buildPercentageCircle(group.completedTasks.toDouble(), group.totalTasks.toDouble()),
+            // buildPercentageCircle(group.completedTasks.toDouble(), group.totalTasks.toDouble()),
 
           ],
         ),
