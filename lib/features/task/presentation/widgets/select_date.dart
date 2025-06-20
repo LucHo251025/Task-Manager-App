@@ -39,7 +39,7 @@ class _SelectDateState extends State<SelectDate> {
   Widget build(BuildContext context) {
     return Container(
         margin: const EdgeInsets.all(2),
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(20),
@@ -58,12 +58,13 @@ class _SelectDateState extends State<SelectDate> {
             }
             return null;
           },
+
           controller: _dateController,
           decoration: InputDecoration(
             border: InputBorder.none,
             labelText: widget.lable,
             prefixIcon: const Icon(Icons.calendar_month,
-            size: 28, color:  Color(0xFF7A3FFF)),
+                size: 28, color: Color(0xFF7A3FFF)),
             suffixIcon: Icon(
               isExpanded ? Icons.arrow_drop_up : Icons.arrow_drop_down,
               size: 28,
@@ -71,6 +72,10 @@ class _SelectDateState extends State<SelectDate> {
             hintText: 'dd/mm/yyyy',
           ),
           readOnly: true,
+          style: const TextStyle(
+            fontSize: 16,
+            color: Colors.black,
+          ),
           onTap: () async {
             setState(() {
               isExpanded = !isExpanded;
@@ -85,6 +90,7 @@ class _SelectDateState extends State<SelectDate> {
                   "${pickedDate.day}/${pickedDate.month}/${pickedDate.year}";
               _dateController.text = formattedDate;
               _selectDate(pickedDate);
+
             }
           },
         ));
