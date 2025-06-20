@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:task_manager_app/features/task/domain/entities/task_group_entity.dart';
 import 'package:task_manager_app/features/task/presentation/pages/add_project_screen.dart';
+import 'package:task_manager_app/features/task/presentation/pages/app_wrapper.dart';
 import 'package:task_manager_app/features/task/presentation/widgets/select_date.dart';
 import 'package:task_manager_app/features/task/presentation/widgets/task_group_card.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -116,28 +117,15 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Flutter Demo',
-        theme: lightTheme,
-        darkTheme: darkTheme,
-        home: Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  Colors.white,
-                  Color(0xFFF8F5FF),
-                  Color(0xFFFFF7E9),
-                ],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-              ),
-            ),
-            child: Scaffold(
-              backgroundColor: Colors.transparent, // hoặc màu khác bạn muốn
-              body: const AddProjectScreen(),
-            )));
+      title: 'Flutter Demo',
+      theme: lightTheme,
+      darkTheme: darkTheme,
+      themeMode: ThemeMode.system,
+      home: const AppWrapper(),
+    );
   }
+
 }

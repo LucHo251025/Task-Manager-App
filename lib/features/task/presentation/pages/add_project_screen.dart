@@ -27,6 +27,8 @@ class _AddProjectScreenState extends State<AddProjectScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final colors = theme.colorScheme;
     return SafeArea(
         child: Scaffold(
       backgroundColor: Colors.transparent,
