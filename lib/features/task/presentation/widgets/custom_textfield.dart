@@ -21,20 +21,26 @@ class _CustomTextFieldState extends State<CustomTextField> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Container(
       margin: const EdgeInsets.all(2),
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
       decoration:  BoxDecoration(
-        color: Colors.white,
+        color: theme.colorScheme.surface,
         borderRadius: BorderRadius.circular(20),
-        boxShadow: const [
+        boxShadow: [
           BoxShadow(
-            color: Colors.black12,
+            color:  theme.colorScheme.outline,
             blurRadius: 10,
             offset: Offset(0, 4),
           ),
         ],
+        border: Border.all(
+          color: theme.colorScheme.outline,
+          width: 1.5
+        )
       ),
+
       child: TextField(
         maxLines: 1,
         controller: _textController,
@@ -65,7 +71,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
         ),
 
         style: TextStyle(
-          color: Colors.black,
+          color:theme.colorScheme.onSecondary,
           fontSize: 16,
       ),
 
