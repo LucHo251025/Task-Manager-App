@@ -34,19 +34,24 @@ class _DescriptionTextFieldState extends State<DescriptionTextField> {
   }
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Container(
         margin: const EdgeInsets.all(2),
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         decoration:  BoxDecoration(
-          color: Colors.white,
+          color: theme.colorScheme.surface,
           borderRadius: BorderRadius.circular(20),
-          boxShadow: const [
+          boxShadow: [
             BoxShadow(
-              color: Colors.black12,
+              color: theme.colorScheme.outline,
               blurRadius: 10,
               offset: Offset(0, 4),
             ),
           ],
+          border: Border.all(
+            color: theme.colorScheme.outline,
+            width: 1.5
+          )
         ),
         child: TextField(
           maxLines: 5,
@@ -82,7 +87,7 @@ class _DescriptionTextFieldState extends State<DescriptionTextField> {
           ),
 
           style: TextStyle(
-            color: Colors.black,
+            color: theme.colorScheme.onSecondary,
             fontSize: 16,
           ),
 
