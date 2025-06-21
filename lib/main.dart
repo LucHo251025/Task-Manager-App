@@ -15,13 +15,17 @@ import 'package:task_manager_app/features/task/presentation/widgets/selected_tas
 void main() {
   runApp(const MyApp());
 }
+
 final lightTheme = ThemeData(
   brightness: Brightness.light,
   primaryColor: Color(0xFF7A3FFF),
   scaffoldBackgroundColor: Colors.white,
   colorScheme: ColorScheme.fromSeed(
-    brightness: Brightness.light,
-      seedColor: Colors.deepPurple
+      onSecondary: Colors.black,
+      brightness: Brightness.light,
+      seedColor: Colors.deepPurple,
+      surface: Colors.white,
+    outline: Colors.black12,
   ),
   textTheme: TextTheme(
     bodyMedium: TextStyle(
@@ -34,7 +38,6 @@ final lightTheme = ThemeData(
       fontSize: 14,
       color: Colors.black54,
     ),
-
     bodyLarge: TextStyle(
       fontFamily: 'Urbanist',
       fontSize: 20,
@@ -59,7 +62,6 @@ final lightTheme = ThemeData(
       fontWeight: FontWeight.w400,
       color: Colors.black87,
     ),
-
   ),
   useMaterial3: true,
 );
@@ -70,11 +72,11 @@ final darkTheme = ThemeData(
   scaffoldBackgroundColor: Colors.black,
   colorScheme: ColorScheme.fromSeed(
       seedColor: Colors.deepPurple,
-    brightness: Brightness.dark,
-
-  ),
-  textTheme:
-  TextTheme(
+      brightness: Brightness.dark,
+      surface: Color(0xFF1F222A),
+      outline: Color(0xFF35383F),
+      onSecondary: Colors.white),
+  textTheme: TextTheme(
     bodyMedium: TextStyle(
       fontFamily: 'Urbanist',
       fontSize: 18,
@@ -116,16 +118,14 @@ final darkTheme = ThemeData(
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: lightTheme,
+      theme: darkTheme,
       darkTheme: darkTheme,
       themeMode: ThemeMode.system,
       home: const AppWrapper(),
     );
   }
-
 }

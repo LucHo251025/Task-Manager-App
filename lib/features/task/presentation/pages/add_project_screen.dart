@@ -29,186 +29,205 @@ class _AddProjectScreenState extends State<AddProjectScreen> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final colors = theme.colorScheme;
-    return SafeArea(
-        child: Scaffold(
-      backgroundColor: Colors.transparent,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        centerTitle: true,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
-        title: const Text(
-          "Add Project",
-          style: TextStyle(
-            fontFamily: 'Urbanist',
-            fontWeight: FontWeight.w600,
-            fontSize: 20,
-            color: Colors.black,
+    final isDark = theme.brightness == Brightness.dark;
+
+    return Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: isDark
+                ? [
+                    const Color(0xFF1F1F1F),
+                    const Color(0xFF121212),
+                    const Color(0xFF0D0D0D),
+                  ]
+                : [
+                    Colors.white,
+                    const Color(0xFFF8F5FF),
+                    const Color(0xFFFFF7E9),
+                  ],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
           ),
         ),
-        titleTextStyle: const TextStyle(
-          fontSize: 23,
-          color: Colors.black,
-          fontWeight: FontWeight.bold,
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.notifications),
-            onPressed: _onSubmit,
-          ),
-        ],
-      ),
-      body: SingleChildScrollView(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            children: [
-              SelectedTaskGroupCard(groups: [
-                TaskGroupEntity(
-                  id: '3',
-                  name: 'Personal',
-                  projects: [
-                    ProjectEntity(
-                      id: 'p4',
-                      groupId: '3',
-                      description: 'Personal projects and hobbies',
-                      name: 'Workout Plan',
-                      tasks: [
-                        TaskEntity(
-                          id: "1",
-                          projectId: "1",
-                          title: "APP",
-                          status: "isProcesss",
-                          startDate: DateTime.now(),
-                          endDate: DateTime.now().add(Duration(days: 1)),
-                        ),
-                        TaskEntity(
-                          id: "1",
-                          projectId: "1",
-                          title: "APP",
-                          status: "isProcesss",
-                          startDate: DateTime.now(),
-                          endDate: DateTime.now().add(Duration(days: 1)),
-                        )
-                      ],
-                      status: 'done',
-                      startDate: DateTime.now(),
-                      endDate: DateTime.now().add(Duration(days: 1)),
-                    ),
-                  ],
-                  icon: const Icon(Icons.person),
-                  iconColor: Colors.blue,
-                ),
-                TaskGroupEntity(
-                  id: '3',
-                  name: 'Personal',
-                  projects: [
-                    ProjectEntity(
-                      id: 'p4',
-                      groupId: '3',
-                      description: 'Personal projects and hobbies',
-                      name: 'Workout Plan',
-                      tasks: [
-                        TaskEntity(
-                          id: "1",
-                          projectId: "1",
-                          title: "APP",
-                          status: "isProcesss",
-                          startDate: DateTime.now(),
-                          endDate: DateTime.now().add(Duration(days: 1)),
-                        ),
-                        TaskEntity(
-                          id: "1",
-                          projectId: "1",
-                          title: "APP",
-                          status: "isProcesss",
-                          startDate: DateTime.now(),
-                          endDate: DateTime.now().add(Duration(days: 1)),
-                        )
-                      ],
-                      status: 'done',
-                      startDate: DateTime.now(),
-                      endDate: DateTime.now().add(Duration(days: 1)),
-                    ),
-                  ],
-                  icon: const Icon(Icons.person),
-                  iconColor: Colors.blue,
-                ),                TaskGroupEntity(
-                  id: '3',
-                  name: 'Personal',
-                  projects: [
-                    ProjectEntity(
-                      id: 'p4',
-                      groupId: '3',
-                      description: 'Personal projects and hobbies',
-                      name: 'Workout Plan',
-                      tasks: [
-                        TaskEntity(
-                          id: "1",
-                          projectId: "1",
-                          title: "APP",
-                          status: "isProcesss",
-                          startDate: DateTime.now(),
-                          endDate: DateTime.now().add(Duration(days: 1)),
-                        ),
-                        TaskEntity(
-                          id: "1",
-                          projectId: "1",
-                          title: "APP",
-                          status: "isProcesss",
-                          startDate: DateTime.now(),
-                          endDate: DateTime.now().add(Duration(days: 1)),
-                        )
-                      ],
-                      status: 'done',
-                      startDate: DateTime.now(),
-                      endDate: DateTime.now().add(Duration(days: 1)),
-                    ),
-                  ],
-                  icon: const Icon(Icons.person),
-                  iconColor: Colors.blue,
-                ),
-              ]),
-              SizedBox(
-                height: 20,
+        child: SafeArea(
+            child: Scaffold(
+          backgroundColor: theme.scaffoldBackgroundColor,
+          appBar: AppBar(
+            backgroundColor: theme.scaffoldBackgroundColor,
+            centerTitle: true,
+            leading: IconButton(
+              icon: Icon(
+                Icons.arrow_back,
+                color: colors.onSecondary,
               ),
-              CustomTextField(),
-              SizedBox(
-                height: 20,
-              ),
-              DescriptionTextField(),
-              SizedBox(
-                height: 20,
-              ),
-              SelectDate(
-                  lable: "Start Date",
-                  initialDate: _startDate,
-                  onDateSelected: (date) {
-                    setState(() {
-                      _startDate = date;
-                    });
-                  }),
-              SizedBox(
-                height: 20,
-              ),
-              SelectDate(
-                  lable: "End Date",
-                  initialDate: _endDate,
-                  onDateSelected: (date) {
-                    setState(() {
-                      _endDate = date;
-                    });
-                  }),
-              SizedBox(
-                height: 80,
-              ),
-              ReusableButton(
-                text: "Add Task",
+              onPressed: () => Navigator.of(context).pop(),
+            ),
+            title: Text(
+              "Add Project",
+              style: theme.textTheme.titleMedium,
+            ),
+            titleTextStyle: const TextStyle(
+              fontSize: 23,
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+            ),
+            actions: [
+              IconButton(
+                icon: const Icon(Icons.notifications),
                 onPressed: _onSubmit,
-              )
+              ),
             ],
-          )),
-    ));
+          ),
+          body: SingleChildScrollView(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                children: [
+                  SelectedTaskGroupCard(groups: [
+                    TaskGroupEntity(
+                      id: '3',
+                      name: 'Personal',
+                      projects: [
+                        ProjectEntity(
+                          id: 'p4',
+                          groupId: '3',
+                          description: 'Personal projects and hobbies',
+                          name: 'Workout Plan',
+                          tasks: [
+                            TaskEntity(
+                              id: "1",
+                              projectId: "1",
+                              title: "APP",
+                              status: "isProcesss",
+                              startDate: DateTime.now(),
+                              endDate: DateTime.now().add(Duration(days: 1)),
+                            ),
+                            TaskEntity(
+                              id: "1",
+                              projectId: "1",
+                              title: "APP",
+                              status: "isProcesss",
+                              startDate: DateTime.now(),
+                              endDate: DateTime.now().add(Duration(days: 1)),
+                            )
+                          ],
+                          status: 'done',
+                          startDate: DateTime.now(),
+                          endDate: DateTime.now().add(Duration(days: 1)),
+                        ),
+                      ],
+                      icon: const Icon(Icons.person),
+                      iconColor: Colors.blue,
+                    ),
+                    TaskGroupEntity(
+                      id: '3',
+                      name: 'Personal',
+                      projects: [
+                        ProjectEntity(
+                          id: 'p4',
+                          groupId: '3',
+                          description: 'Personal projects and hobbies',
+                          name: 'Workout Plan',
+                          tasks: [
+                            TaskEntity(
+                              id: "1",
+                              projectId: "1",
+                              title: "APP",
+                              status: "isProcesss",
+                              startDate: DateTime.now(),
+                              endDate: DateTime.now().add(Duration(days: 1)),
+                            ),
+                            TaskEntity(
+                              id: "1",
+                              projectId: "1",
+                              title: "APP",
+                              status: "isProcesss",
+                              startDate: DateTime.now(),
+                              endDate: DateTime.now().add(Duration(days: 1)),
+                            )
+                          ],
+                          status: 'done',
+                          startDate: DateTime.now(),
+                          endDate: DateTime.now().add(Duration(days: 1)),
+                        ),
+                      ],
+                      icon: const Icon(Icons.person),
+                      iconColor: Colors.blue,
+                    ),
+                    TaskGroupEntity(
+                      id: '3',
+                      name: 'Personal',
+                      projects: [
+                        ProjectEntity(
+                          id: 'p4',
+                          groupId: '3',
+                          description: 'Personal projects and hobbies',
+                          name: 'Workout Plan',
+                          tasks: [
+                            TaskEntity(
+                              id: "1",
+                              projectId: "1",
+                              title: "APP",
+                              status: "isProcesss",
+                              startDate: DateTime.now(),
+                              endDate: DateTime.now().add(Duration(days: 1)),
+                            ),
+                            TaskEntity(
+                              id: "1",
+                              projectId: "1",
+                              title: "APP",
+                              status: "isProcesss",
+                              startDate: DateTime.now(),
+                              endDate: DateTime.now().add(Duration(days: 1)),
+                            )
+                          ],
+                          status: 'done',
+                          startDate: DateTime.now(),
+                          endDate: DateTime.now().add(Duration(days: 1)),
+                        ),
+                      ],
+                      icon: const Icon(Icons.person),
+                      iconColor: Colors.blue,
+                    ),
+                  ]),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  CustomTextField(),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  DescriptionTextField(),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  SelectDate(
+                      lable: "Start Date",
+                      initialDate: _startDate,
+                      onDateSelected: (date) {
+                        setState(() {
+                          _startDate = date;
+                        });
+                      }),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  SelectDate(
+                      lable: "End Date",
+                      initialDate: _endDate,
+                      onDateSelected: (date) {
+                        setState(() {
+                          _endDate = date;
+                        });
+                      }),
+                  SizedBox(
+                    height: 80,
+                  ),
+                  ReusableButton(
+                    text: "Add Task",
+                    onPressed: _onSubmit,
+                  )
+                ],
+              )),
+        )));
   }
 }

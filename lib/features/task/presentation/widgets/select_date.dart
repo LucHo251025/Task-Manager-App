@@ -37,19 +37,24 @@ class _SelectDateState extends State<SelectDate> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Container(
         margin: const EdgeInsets.all(2),
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: theme.colorScheme.surface,
           borderRadius: BorderRadius.circular(20),
-          boxShadow: const [
+          boxShadow: [
             BoxShadow(
-              color: Colors.black12,
+              color: theme.colorScheme.outline,
               blurRadius: 10,
               offset: Offset(0, 4),
             ),
           ],
+          border: Border.all(
+            color: theme.colorScheme.outline,
+            width: 1.5
+          )
         ),
         child: TextFormField(
           validator: (value) {
@@ -63,7 +68,10 @@ class _SelectDateState extends State<SelectDate> {
           decoration: InputDecoration(
             border: InputBorder.none,
             labelText: widget.lable,
-            prefixIcon: const Icon(Icons.calendar_month,
+            labelStyle: TextStyle(
+              color: theme.colorScheme.onSecondary,
+            ),
+            prefixIcon: Icon(Icons.calendar_month,
                 size: 28, color: Color(0xFF7A3FFF)),
             suffixIcon: Icon(
               isExpanded ? Icons.arrow_drop_up : Icons.arrow_drop_down,
@@ -72,9 +80,9 @@ class _SelectDateState extends State<SelectDate> {
             hintText: 'dd/mm/yyyy',
           ),
           readOnly: true,
-          style: const TextStyle(
+          style:TextStyle(
             fontSize: 16,
-            color: Colors.black,
+            color: theme.colorScheme.onSecondary,
           ),
           onTap: () async {
             setState(() {
