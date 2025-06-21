@@ -69,6 +69,7 @@ class _SelectDateState extends State<SelectDate> {
             border: InputBorder.none,
             labelText: widget.lable,
             labelStyle: TextStyle(
+              fontSize: 17,
               color: theme.colorScheme.onSecondary,
             ),
             prefixIcon: Icon(Icons.calendar_month,

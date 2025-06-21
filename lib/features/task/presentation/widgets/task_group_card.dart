@@ -50,6 +50,13 @@ class TaskGroupCard extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 4),
+                  Text(
+                    '$totalProject Task',
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: theme.colorScheme.onSurface.withOpacity(0.6),
+                    ),
+                  ),
                 ],
               ),
             ),

@@ -3,6 +3,7 @@ import 'package:task_manager_app/features/task/domain/entities/project_entity.da
 import 'package:task_manager_app/features/task/domain/entities/task_entity.dart';
 import 'package:task_manager_app/features/task/domain/entities/task_group_entity.dart';
 import 'package:task_manager_app/features/task/presentation/widgets/select_date.dart';
+import 'package:task_manager_app/features/task/presentation/widgets/task_card.dart';
 import 'package:task_manager_app/features/task/presentation/widgets/task_group_card.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:task_manager_app/features/task/presentation/widgets/reusable_button.dart';
@@ -51,9 +52,9 @@ class _AddProjectScreenState extends State<AddProjectScreen> {
         ),
         child: SafeArea(
             child: Scaffold(
-          backgroundColor: theme.scaffoldBackgroundColor,
+          backgroundColor: Colors.transparent,
           appBar: AppBar(
-            backgroundColor: theme.scaffoldBackgroundColor,
+            backgroundColor: Colors.transparent,
             centerTitle: true,
             leading: IconButton(
               icon: Icon(
@@ -82,7 +83,15 @@ class _AddProjectScreenState extends State<AddProjectScreen> {
               padding: const EdgeInsets.all(16.0),
               child: Column(
                 children: [
-                  TaskGroupCard(
+                  TaskCard(
+                    task: TaskEntity(
+                      id: "1",
+                      projectId: "1",
+                      title: "Design Mockup",
+                      status: "isProcesss",
+                      startDate: DateTime.now(),
+                      endDate: DateTime.now().add(Duration(days: 2)),
+                    ),
                     group: TaskGroupEntity(
                       id: '1',
                       name: 'Work',
@@ -116,7 +125,7 @@ class _AddProjectScreenState extends State<AddProjectScreen> {
                         ),
                       ],
                       icon: Icon(
-                          Icons.work,
+                        Icons.work,
                         color: Color(0xFF6C3BEF),
                       ),
                       iconColor: Colors.green,
