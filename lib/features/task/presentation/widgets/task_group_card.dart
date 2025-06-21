@@ -9,9 +9,15 @@ class TaskGroupCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
+    final totalProject = group.projects.length;
+    final completedProject = group.projects.where((project) => project.status == 'done').length;
+    final percentage = totalProject > 0 ? completedProject / totalProject : 0.0;
+
     return Card(
-      color: Colors.white,
-      margin: EdgeInsets.all(12),
+      color: theme.colorScheme.surface,
+      margin: EdgeInsets.all(2),
       elevation: 3.0,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12.0),
@@ -24,19 +30,13 @@ class TaskGroupCard extends StatelessWidget {
               width: 50,
               height: 50,
               decoration: BoxDecoration(
-                color: Color(0xFFFDE6F0),
+                color: group.iconColor,
                 borderRadius: BorderRadius.circular(8),
               ),
-              child: Icon(
-                Icons.work_outline,
-                color: Color(0xFFED77B4),
-                size: 28,
-              ),
+              child: group.icon
             ),
 
-
             SizedBox(width: 16),
-
             Expanded(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -50,15 +50,35 @@ class TaskGroupCard extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 4),
-
                 ],
               ),
             ),
 
             SizedBox(width: 16),
 
-            // buildPercentageCircle(group.completedTasks.toDouble(), group.totalTasks.toDouble()),
-
+            Stack(
+              alignment: Alignment.center,
+              children: [
+                SizedBox(
+                  width: 50,
+                  height: 50,
+                  child: CircularProgressIndicator(
+                    value: percentage,
+                    strokeWidth: 5,
+                    backgroundColor: Color(0xFFFDE6F0), // Màu nền của vòng tròn
+                    valueColor: AlwaysStoppedAnimation<Color>(Color(0xFFED77B4)),
+                  ),
+                ),
+                Text(
+                  '${(percentage * 100).toStringAsFixed(0)}%',
+                  style: TextStyle(
+                    color: theme.colorScheme.onSecondary,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 12,
+                  ),
+                ),
+              ],
+            )
           ],
         ),
       ),
@@ -66,30 +86,4 @@ class TaskGroupCard extends StatelessWidget {
   }
 }
 
-Widget buildPercentageCircle(double completed, double total) {
-  double percentage = total > 0 ? (completed / total) : 0;
-
-  return Stack(
-    alignment: Alignment.center,
-    children: [
-      SizedBox(
-        width: 50,
-        height: 50,
-        child: CircularProgressIndicator(
-          value: percentage,
-          strokeWidth: 5,
-          backgroundColor: Color(0xFFFDE6F0), // Màu nền của vòng tròn
-          valueColor: AlwaysStoppedAnimation<Color>(Color(0xFFED77B4)),
-        ),
-      ),
-      Text(
-        '${(percentage * 100).toStringAsFixed(0)}%',
-        style: TextStyle(
-          fontWeight: FontWeight.bold,
-          fontSize: 12,
-        ),
-      ),
-    ],
-  );
-}
 

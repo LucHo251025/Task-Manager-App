@@ -30,21 +30,21 @@ class ReusableButton extends StatelessWidget {
           children: [
 
             Text(
-              text, // Sử dụng text được truyền vào
+              text,
               style: TextStyle(
-                color: Colors.white, // Màu chữ trắng tinh khiết
-                fontSize: 25.0, // Kích thước chữ to hơn
-                fontWeight: FontWeight.bold, // Chữ đậm
+                color: Colors.white,
+                fontSize: 25.0,
+                fontWeight: FontWeight.bold,
               ),
             ),
             SizedBox(width: 20),
             if (icon != null) ...[
               Icon(
                 icon,
-                color: Colors.white, // Màu trắng cho icon
+                color: Colors.white,
                 size: 24.0,
               ),
-              SizedBox(width: 8.0), // Khoảng cách giữa icon và chữ
+              SizedBox(width: 8.0),
             ],
           ],
         ));

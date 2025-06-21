@@ -82,6 +82,49 @@ class _AddProjectScreenState extends State<AddProjectScreen> {
               padding: const EdgeInsets.all(16.0),
               child: Column(
                 children: [
+                  TaskGroupCard(
+                    group: TaskGroupEntity(
+                      id: '1',
+                      name: 'Work',
+                      projects: [
+                        ProjectEntity(
+                          id: 'p1',
+                          groupId: '1',
+                          description: 'Work-related projects and tasks',
+                          name: 'Project Alpha',
+                          tasks: [
+                            TaskEntity(
+                              id: "1",
+                              projectId: "1",
+                              title: "Design Mockup",
+                              status: "isProcesss",
+                              startDate: DateTime.now(),
+                              endDate: DateTime.now().add(Duration(days: 2)),
+                            ),
+                            TaskEntity(
+                              id: "2",
+                              projectId: "1",
+                              title: "Develop Backend",
+                              status: "isProcesss",
+                              startDate: DateTime.now(),
+                              endDate: DateTime.now().add(Duration(days: 3)),
+                            )
+                          ],
+                          status: 'done',
+                          startDate: DateTime.now(),
+                          endDate: DateTime.now().add(Duration(days: 5)),
+                        ),
+                      ],
+                      icon: Icon(
+                          Icons.work,
+                        color: Color(0xFF6C3BEF),
+                      ),
+                      iconColor: Colors.green,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
                   SelectedTaskGroupCard(groups: [
                     TaskGroupEntity(
                       id: '3',

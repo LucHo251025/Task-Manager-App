@@ -101,18 +101,22 @@ class _SelectedTaskGroupCardState extends State<SelectedTaskGroupCard> {
         ),
         if (isExpanded)
           Container(
-            margin: const EdgeInsets.symmetric(vertical: 10),
+            margin: const EdgeInsets.symmetric(vertical: 10,horizontal: 2),
             padding: const EdgeInsets.symmetric(vertical: 8),
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: theme.colorScheme.surface,
               borderRadius: BorderRadius.circular(16),
-              boxShadow: const [
+              boxShadow: [
                 BoxShadow(
-                  color: Colors.black12,
+                  color: theme.colorScheme.outline,
                   blurRadius: 8,
                   offset: Offset(0, 2),
                 ),
               ],
+              border: Border.all(
+                color: theme.colorScheme.outline,
+                width: 1.5
+              )
 
             ),
             child:  Column(
@@ -126,13 +130,19 @@ class _SelectedTaskGroupCardState extends State<SelectedTaskGroupCard> {
                               color: group.iconColor,
                               borderRadius: BorderRadius.circular(8),
                             ),
-                            child: group.icon),
+                            child: group.icon
+                        ),
                         title: Text(group.name,
-                            style: const TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.bold)),
+                            style: TextStyle(
+                                fontSize: 18,
+                                color: theme.colorScheme.onSecondary,
+                                fontWeight: FontWeight.bold
+                            )
+                        ),
                         onTap: () => _selectGroup(group),
-                      ))
-                  .toList(),
+
+              )
+              ).toList(),
 
             ),
           )
