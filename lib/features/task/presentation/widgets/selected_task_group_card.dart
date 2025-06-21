@@ -19,6 +19,7 @@ class _SelectedTaskGroupCardState extends State<SelectedTaskGroupCard> {
   late TaskGroupEntity selected = widget.groups.first;
   bool isExpanded = false;
 
+
   @override
   void initState() {
     super.initState();
@@ -35,6 +36,8 @@ class _SelectedTaskGroupCardState extends State<SelectedTaskGroupCard> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final colors = theme.colorScheme;
     return Column(
       children: [
         GestureDetector(
@@ -43,16 +46,21 @@ class _SelectedTaskGroupCardState extends State<SelectedTaskGroupCard> {
             margin: const EdgeInsets.all(2),
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: theme.colorScheme.surface,
               borderRadius: BorderRadius.circular(20),
-              boxShadow: const [
+              boxShadow: [
                 BoxShadow(
-                  color: Colors.black12,
+                  color: theme.colorScheme.outline,
                   blurRadius: 10,
                   offset: Offset(0, 4),
                 ),
               ],
+              border: Border.all(
+                color: Theme.of(context).colorScheme.outline, // màu viền
+                width: 1.5, // độ dày viền
+              ),
             ),
+
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -76,7 +84,8 @@ class _SelectedTaskGroupCardState extends State<SelectedTaskGroupCard> {
                             style: TextStyle(
                                 fontSize: 12, color: Colors.grey[600])),
                         Text(selected.name,
-                            style: const TextStyle(
+                            style: TextStyle(
+                              color: theme.colorScheme.onSecondary,
                                 fontSize: 18, fontWeight: FontWeight.bold)),
                       ],
                     )
