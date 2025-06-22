@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:task_manager_app/features/task/domain/entities/project_entity.dart';
 import 'package:task_manager_app/features/task/domain/entities/task_entity.dart';
 import 'package:task_manager_app/features/task/domain/entities/task_group_entity.dart';
+import 'package:task_manager_app/features/task/presentation/widgets/horizontal_date_picker.dart';
 import 'package:task_manager_app/features/task/presentation/widgets/select_date.dart';
 import 'package:task_manager_app/features/task/presentation/widgets/status_tabbar.dart';
 import 'package:task_manager_app/features/task/presentation/widgets/task_card.dart';
@@ -84,6 +85,17 @@ class _AddProjectScreenState extends State<AddProjectScreen> {
               padding: const EdgeInsets.all(16.0),
               child: Column(
                 children: [
+                  HorizontalDatePicker(
+                    initialDate: DateTime.now(),
+                    onDateSelected: (pickedDate) {
+                      // Xử lý khi chọn ngày
+                      print('Ngày được chọn: $pickedDate');
+                    },
+                  ),
+
+                  SizedBox(
+                    height: 20,
+                  ),
                   StatusTabBar(
                     onTabSelected: (tab) {
                       print('Selected: $tab');

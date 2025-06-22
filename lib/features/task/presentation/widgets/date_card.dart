@@ -19,17 +19,18 @@ class DateCard extends StatelessWidget {
       onTap: onTap,
       child: Container(
         width: 80,
-        padding: const EdgeInsets.symmetric(vertical: 12),
+        margin: const EdgeInsets.symmetric(horizontal: 6),
+        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
         decoration: BoxDecoration(
           color: isSelected ? Colors.deepPurpleAccent : Colors.white,
           borderRadius: BorderRadius.circular(20),
-          boxShadow:[
+          boxShadow: [
             BoxShadow(
-              color: Colors.deepPurple.withOpacity(0.4),
-              blurRadius: 8,
-              offset: const Offset(0, 4),
-            )
-          ]
+              color: Colors.grey.withOpacity(0.2),
+              blurRadius: 2,
+              offset: Offset(4, 4),
+            ),
+          ],
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
