@@ -47,18 +47,18 @@ class _TaskCardState extends State<TaskCard> {
 
     switch (status) {
       case TaskStatus.todo:
-        backgroundColor = Colors.grey.shade200;
-        textColor = Colors.grey.shade800;
+        backgroundColor = Color(0xFFE1F3FF);
+        textColor = Color(0xFF0094FF);
         label = "To-do";
         break;
       case TaskStatus.isProcess:
-        backgroundColor = Colors.blue.shade100;
-        textColor = Colors.blue.shade800;
+        backgroundColor = Color(0xFFFFE9E0);
+        textColor = Color(0xFFFF6B1D);
         label = "In Progress";
         break;
       case TaskStatus.done:
-        backgroundColor = Colors.deepPurple.shade100;
-        textColor = Colors.deepPurple.shade800;
+        backgroundColor = Color(0xFFF0EFFF);
+        textColor = Color(0xFF8A59FF);
         label = "Done";
         break;
     }
@@ -137,7 +137,7 @@ class _TaskCardState extends State<TaskCard> {
                         child: Text(
                           label,
                           style: TextStyle(
-                            fontSize: 10,
+                            fontSize: 13,
                             color: textColor,
                             fontWeight: FontWeight.bold,
                           ),
