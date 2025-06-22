@@ -3,6 +3,7 @@ import 'package:task_manager_app/features/task/domain/entities/project_entity.da
 import 'package:task_manager_app/features/task/domain/entities/task_entity.dart';
 import 'package:task_manager_app/features/task/domain/entities/task_group_entity.dart';
 import 'package:task_manager_app/features/task/presentation/widgets/select_date.dart';
+import 'package:task_manager_app/features/task/presentation/widgets/status_tabbar.dart';
 import 'package:task_manager_app/features/task/presentation/widgets/task_card.dart';
 import 'package:task_manager_app/features/task/presentation/widgets/task_group_card.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -83,6 +84,15 @@ class _AddProjectScreenState extends State<AddProjectScreen> {
               padding: const EdgeInsets.all(16.0),
               child: Column(
                 children: [
+                  StatusTabBar(
+                    onTabSelected: (tab) {
+                      print('Selected: $tab');
+                      // TODO: Filter task list based on tab
+                    },
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
                   TaskCard(
                     task: TaskEntity(
                       id: "1",
