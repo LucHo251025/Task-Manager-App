@@ -91,6 +91,7 @@ class _TaskCardState extends State<TaskCard> {
                     Text(
                       widget.task.title,
                       style: TextStyle(
+                        color: theme.colorScheme.onSecondary,
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),
@@ -109,6 +110,7 @@ class _TaskCardState extends State<TaskCard> {
                 ),
                 Column(
                   mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.end,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
