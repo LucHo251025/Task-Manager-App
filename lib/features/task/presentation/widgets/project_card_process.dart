@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:task_manager_app/features/task/domain/entities/project_entity.dart';
 import 'package:task_manager_app/features/task/domain/entities/task_entity.dart';
 import 'package:task_manager_app/features/task/domain/entities/task_group_entity.dart';
 
 class ProjectCardProcess extends StatelessWidget {
   final TaskGroupEntity group;
-  final TaskEntity task;
-
+  final ProjectEntity projectEntity;
   const ProjectCardProcess({
     super.key,
     required this.group,
-    required this.task,
+    required this.projectEntity,
   });
 
   @override
@@ -53,7 +53,7 @@ class ProjectCardProcess extends StatelessWidget {
           const SizedBox(height: 8),
 
           Text(
-            task.title,
+            projectEntity.name,
             style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.bold,
@@ -65,7 +65,7 @@ class ProjectCardProcess extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(10),
             child: LinearProgressIndicator(
-              value: 50 / 100,
+              value: projectEntity.tasks.length / 100,
               minHeight: 10,
               backgroundColor: Colors.grey[300],
               valueColor: AlwaysStoppedAnimation<Color>(
