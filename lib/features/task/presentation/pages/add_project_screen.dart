@@ -3,6 +3,7 @@ import 'package:task_manager_app/features/task/domain/entities/project_entity.da
 import 'package:task_manager_app/features/task/domain/entities/task_entity.dart';
 import 'package:task_manager_app/features/task/domain/entities/task_group_entity.dart';
 import 'package:task_manager_app/features/task/presentation/widgets/horizontal_date_picker.dart';
+import 'package:task_manager_app/features/task/presentation/widgets/project_card_process.dart';
 import 'package:task_manager_app/features/task/presentation/widgets/select_date.dart';
 import 'package:task_manager_app/features/task/presentation/widgets/status_tabbar.dart';
 import 'package:task_manager_app/features/task/presentation/widgets/task_card.dart';
@@ -85,6 +86,55 @@ class _AddProjectScreenState extends State<AddProjectScreen> {
               padding: const EdgeInsets.all(16.0),
               child: Column(
                 children: [
+                  ProjectCardProcess(group: TaskGroupEntity(
+                    id: '1',
+                    name: 'Work',
+                    projects: [
+                      ProjectEntity(
+                        id: 'p1',
+                        groupId: '1',
+                        description: 'Work-related projects and tasks',
+                        name: 'Project Alpha',
+                        tasks: [
+                          TaskEntity(
+                            id: "1",
+                            projectId: "1",
+                            title: "Design Mockup",
+                            status: "isProcesss",
+                            startDate: DateTime.now(),
+                            endDate: DateTime.now().add(Duration(days: 2)),
+                          ),
+                          TaskEntity(
+                            id: "2",
+                            projectId: "1",
+                            title: "Develop Backend",
+                            status: "isProcesss",
+                            startDate: DateTime.now(),
+                            endDate: DateTime.now().add(Duration(days: 3)),
+                          )
+                        ],
+                        status: 'done',
+                        startDate: DateTime.now(),
+                        endDate: DateTime.now().add(Duration(days: 5)),
+                      ),
+                    ],
+                    icon: Icon(
+                      Icons.work,
+                      color: Color(0xFF6C3BEF),
+                    ),
+                    iconColor: Colors.green,
+                  ), task: TaskEntity(
+                    id: "1",
+                    projectId: "1",
+                    title: "Design Mockup",
+                    status: "isProcesss",
+                    startDate: DateTime.now(),
+                    endDate: DateTime.now().add(Duration(days: 2)),
+                  )
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
                   HorizontalDatePicker(
                     initialDate: DateTime.now(),
                     onDateSelected: (pickedDate) {
