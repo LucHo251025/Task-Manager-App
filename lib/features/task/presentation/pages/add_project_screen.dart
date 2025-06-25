@@ -268,8 +268,43 @@ class _AddProjectScreenState extends State<AddProjectScreen> {
                   ),
                   SelectedTaskGroupCard(groups: [
                     TaskGroupEntity(
-                      id: '3',
-                      name: 'Personal',
+                      id: '1',
+                      name: 'Personal Project',
+                      projects: [
+                        ProjectEntity(
+                          id: 'p4',
+                          groupId: '3',
+                          description: 'Personal projects and hobbies',
+                          name: 'Workout Plan',
+                          tasks: [
+                            TaskEntity(
+                              id: "1",
+                              projectId: "1",
+                              title: "APP",
+                              status: "isProcesss",
+                              startDate: DateTime.now(),
+                              endDate: DateTime.now().add(Duration(days: 1)),
+                            ),
+                            TaskEntity(
+                              id: "1",
+                              projectId: "1",
+                              title: "APP",
+                              status: "isProcesss",
+                              startDate: DateTime.now(),
+                              endDate: DateTime.now().add(Duration(days: 1)),
+                            )
+                          ],
+                          status: 'done',
+                          startDate: DateTime.now(),
+                          endDate: DateTime.now().add(Duration(days: 1)),
+                        ),
+                      ],
+                      icon: const Icon(Icons.person),
+                      iconColor: Colors.blue,
+                    ),
+                    TaskGroupEntity(
+                      id: '2',
+                      name: 'Office Project',
                       projects: [
                         ProjectEntity(
                           id: 'p4',
@@ -304,42 +339,7 @@ class _AddProjectScreenState extends State<AddProjectScreen> {
                     ),
                     TaskGroupEntity(
                       id: '3',
-                      name: 'Personal',
-                      projects: [
-                        ProjectEntity(
-                          id: 'p4',
-                          groupId: '3',
-                          description: 'Personal projects and hobbies',
-                          name: 'Workout Plan',
-                          tasks: [
-                            TaskEntity(
-                              id: "1",
-                              projectId: "1",
-                              title: "APP",
-                              status: "isProcesss",
-                              startDate: DateTime.now(),
-                              endDate: DateTime.now().add(Duration(days: 1)),
-                            ),
-                            TaskEntity(
-                              id: "1",
-                              projectId: "1",
-                              title: "APP",
-                              status: "isProcesss",
-                              startDate: DateTime.now(),
-                              endDate: DateTime.now().add(Duration(days: 1)),
-                            )
-                          ],
-                          status: 'done',
-                          startDate: DateTime.now(),
-                          endDate: DateTime.now().add(Duration(days: 1)),
-                        ),
-                      ],
-                      icon: const Icon(Icons.person),
-                      iconColor: Colors.blue,
-                    ),
-                    TaskGroupEntity(
-                      id: '3',
-                      name: 'Personal',
+                      name: 'Daily Study',
                       projects: [
                         ProjectEntity(
                           id: 'p4',

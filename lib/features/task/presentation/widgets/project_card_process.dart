@@ -75,7 +75,7 @@ class ProjectCardProcess extends StatelessWidget {
         : group.icon;
     return Container(
       width: double.infinity,
-      margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+      margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 8),
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         color: groupColors['color'],

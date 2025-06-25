@@ -34,10 +34,43 @@ class _SelectedTaskGroupCardState extends State<SelectedTaskGroupCard> {
     widget.onGroupSelected?.call(group);
   }
 
+  Map<String, Color> getColorIconByGroupName(String name) {
+    switch(name) {
+      case 'Office Project':
+        return {
+          'icon': Color(0xFFF46AA0),
+          'color': Color(0xFFFEE7F0),
+        };
+      case 'Personal Project':
+        return {
+          'icon': Color(0xFF9B6EF3),
+          'color': Color(0xFFF1EAFE),
+        };
+      case 'Daily Study':
+        return {
+          'icon': Color(0xFFF78A34),
+          'color': Color(0xFFFFEADB),
+        };
+      default:
+        return {
+          'icon': Colors.grey.shade200,
+          'color': Colors.grey,
+        };
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final colors = theme.colorScheme;
+
+    final groupColors = getColorIconByGroupName(selected.name);
+    Icon themedIcon = selected.icon is Icon
+        ? Icon(
+      (selected.icon as Icon).icon,
+      color: groupColors['icon'],
+      size: (selected.icon as Icon).size ?? 23,
+    )
+        : selected.icon;
     return Column(
       children: [
         GestureDetector(
@@ -70,10 +103,10 @@ class _SelectedTaskGroupCardState extends State<SelectedTaskGroupCard> {
                         width: 50,
                         height: 50,
                         decoration: BoxDecoration(
-                          color: selected.iconColor,
+                          color: groupColors['color'],
                           borderRadius: BorderRadius.circular(8),
                         ),
-                        child: selected.icon),
+                        child: themedIcon),
                     SizedBox(
                       width: 10,
                     ),
@@ -82,7 +115,7 @@ class _SelectedTaskGroupCardState extends State<SelectedTaskGroupCard> {
                       children: [
                         Text("Task Group",
                             style: TextStyle(
-                                fontSize: 12, color: Colors.grey[600])),
+                                fontSize: 14, color: Colors.grey[600])),
                         Text(selected.name,
                             style: TextStyle(
                               color: theme.colorScheme.onSecondary,
@@ -121,28 +154,39 @@ class _SelectedTaskGroupCardState extends State<SelectedTaskGroupCard> {
             ),
             child:  Column(
               children: widget.groups
-                  .where((g) => g != selected)
-                  .map((group) => ListTile(
-                        leading: Container(
-                            width: 50,
-                            height: 50,
-                            decoration: BoxDecoration(
-                              color: group.iconColor,
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            child: group.icon
-                        ),
-                        title: Text(group.name,
-                            style: TextStyle(
-                                fontSize: 18,
-                                color: theme.colorScheme.onSecondary,
-                                fontWeight: FontWeight.bold
-                            )
-                        ),
-                        onTap: () => _selectGroup(group),
+                  .where((g) => g.id != selected.id)
+                  .map((group) {
+                final groupColors = getColorIconByGroupName(group.name); // 👈 lấy đúng màu theo tên group
+                final themedIcon = group.icon is Icon
+                    ? Icon(
+                  (group.icon as Icon).icon,
+                  color: groupColors['icon'], // 👈 màu icon
+                  size: (group.icon as Icon).size ?? 23,
+                )
+                    : group.icon;
 
-              )
-              ).toList(),
+                return ListTile(
+                  leading: Container(
+                    width: 50,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      color: groupColors['color'], // 👈 màu nền nhạt
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: themedIcon,
+                  ),
+                  title: Text(
+                    group.name,
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: theme.colorScheme.onSecondary,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  onTap: () => _selectGroup(group),
+                );
+              })
+                  .toList(),
 
             ),
           )
