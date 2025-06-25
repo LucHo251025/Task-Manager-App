@@ -37,14 +37,46 @@ class _TaskCardState extends State<TaskCard> {
     });
   }
 
+  Map<String, Color> getColorIconByGroupName(String name) {
+    switch(name) {
+      case 'Office Project':
+        return {
+          'icon': Color(0xFFF46AA0),
+          'color': Color(0xFFFEE7F0),
+        };
+      case 'Personal Project':
+        return {
+          'icon': Color(0xFF9B6EF3),
+          'color': Color(0xFFF1EAFE),
+        };
+      case 'Daily Studio':
+        return {
+          'icon': Color(0xFFF78A34),
+          'color': Color(0xFFFFEADB),
+        };
+      default:
+        return {
+          'icon': Colors.grey.shade200,
+          'color': Colors.grey,
+        };
+    }
+  }
+
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-
+    final iconColor = getColorIconByGroupName(widget.group.name);
     Color backgroundColor;
     Color textColor;
     String label;
-
+    Icon themedIcon = widget.group.icon is Icon
+        ? Icon(
+      (widget.group.icon as Icon).icon,
+      color: iconColor['color'],
+      size: (widget.group.icon as Icon).size ?? 18,
+    )
+        : widget.group.icon;
     switch (status) {
       case TaskStatus.todo:
         backgroundColor = Color(0xFFE1F3FF);
@@ -62,6 +94,7 @@ class _TaskCardState extends State<TaskCard> {
         label = "Done";
         break;
     }
+
     return Card(
         color: theme.colorScheme.surface,
         margin: EdgeInsets.all(2),
@@ -117,10 +150,10 @@ class _TaskCardState extends State<TaskCard> {
                         width: 30,
                         height: 30,
                         decoration: BoxDecoration(
-                          color: widget.group.iconColor,
+                          color: iconColor['color'],
                           borderRadius: BorderRadius.circular(8),
                         ),
-                        child: widget.group.icon),
+                        child: themedIcon),
                     SizedBox(
                       height: 20,
                     ),
