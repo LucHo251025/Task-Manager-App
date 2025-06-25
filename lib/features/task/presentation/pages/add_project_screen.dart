@@ -90,7 +90,7 @@ class _AddProjectScreenState extends State<AddProjectScreen> {
                   HorizontalProjectList(groupList: [
                     TaskGroupEntity(
                       id: '1',
-                      name: 'Work',
+                      name: 'Office Project',
                       projects: [
                         ProjectEntity(
                           id: 'p1',
@@ -155,7 +155,7 @@ class _AddProjectScreenState extends State<AddProjectScreen> {
                     ),
                     TaskGroupEntity(
                       id: '1',
-                      name: 'Personal Projects',
+                      name: 'Personal Project',
                       projects: [
                         ProjectEntity(
                           id: 'p1',
@@ -192,74 +192,6 @@ class _AddProjectScreenState extends State<AddProjectScreen> {
                       iconColor: Colors.green,
                     )
                   ]),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  ProjectCardProcess(group: TaskGroupEntity(
-                    id: '1',
-                    name: 'Work',
-                    projects: [
-                      ProjectEntity(
-                        id: 'p1',
-                        groupId: '1',
-                        description: 'Work-related projects and tasks',
-                        name: 'Project Alpha',
-                        tasks: [
-                          TaskEntity(
-                            id: "1",
-                            projectId: "1",
-                            title: "Design Mockup",
-                            status: "isProcesss",
-                            startDate: DateTime.now(),
-                            endDate: DateTime.now().add(Duration(days: 2)),
-                          ),
-                          TaskEntity(
-                            id: "2",
-                            projectId: "1",
-                            title: "Develop Backend",
-                            status: "isProcesss",
-                            startDate: DateTime.now(),
-                            endDate: DateTime.now().add(Duration(days: 3)),
-                          )
-                        ],
-                        status: 'isProcesss',
-                        startDate: DateTime.now(),
-                        endDate: DateTime.now().add(Duration(days: 5)),
-                      ),
-                    ],
-                    icon: Icon(
-                      Icons.work,
-                      color: Color(0xFF6C3BEF),
-                    ),
-                    iconColor: Colors.green,
-                  ), projectEntity:
-                  ProjectEntity(
-                    id: 'p4',
-                    groupId: '3',
-                    description: 'Personal projects and hobbies',
-                    name: 'Workout Plan',
-                    tasks: [
-                      TaskEntity(
-                        id: "1",
-                        projectId: "1",
-                        title: "APP",
-                        status: "isProcesss",
-                        startDate: DateTime.now(),
-                        endDate: DateTime.now().add(Duration(days: 1)),
-                      ),
-                      TaskEntity(
-                        id: "1",
-                        projectId: "1",
-                        title: "APP",
-                        status: "isProcesss",
-                        startDate: DateTime.now(),
-                        endDate: DateTime.now().add(Duration(days: 1)),
-                      )
-                    ],
-                    status: 'isProcesss',
-                    startDate: DateTime.now(),
-                    endDate: DateTime.now().add(Duration(days: 1)),
-                  ),                  ),
                   SizedBox(
                     height: 20,
                   ),

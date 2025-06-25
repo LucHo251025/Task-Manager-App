@@ -11,15 +11,74 @@ class ProjectCardProcess extends StatelessWidget {
     required this.group,
     required this.projectEntity,
   });
+  Map<String, Color> getColorByGroupName(String name) {
+    switch(name) {
+      case 'Office Project':
+        return {
+          'processColor': Color(0xFF0094FF),
+          'color': Color(0xFFE1F3FF),
+        };
+      case 'Personal Project':
+        return {
+          'processColor': Color(0xFFFF6B1D),
+          'color': Color(0xFFFFE9E0),
+        };
+        case 'Daily Studio':
+        return {
+          'processColor': Color(0xFF6B1DFF),
+          'color': Color(0xFFF0EFFF),
+        };
+      default:
+        return {
+          'processColor': Colors.grey.shade200,
+          'color': Colors.grey,
+        };
+    }
+  }
+
+  Map<String, Color> getColorIconByGroupName(String name) {
+    switch(name) {
+      case 'Office Project':
+        return {
+          'icon': Color(0xFFF46AA0),
+          'color': Color(0xFFFEE7F0),
+        };
+      case 'Personal Project':
+        return {
+          'icon': Color(0xFF9B6EF3),
+          'color': Color(0xFFF1EAFE),
+        };
+      case 'Daily Studio':
+        return {
+          'icon': Color(0xFFF78A34),
+          'color': Color(0xFFFFEADB),
+        };
+      default:
+        return {
+          'icon': Colors.grey.shade200,
+          'color': Colors.grey,
+        };
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final groupColors = getColorByGroupName(group.name);
+    final groupIconColors = getColorIconByGroupName(group.name);
+    Icon themedIcon = group.icon is Icon
+        ? Icon(
+      (group.icon as Icon).icon,
+      color: groupIconColors['icon'],
+      size: (group.icon as Icon).size ?? 18,
+    )
+        : group.icon;
     return Container(
       width: double.infinity,
+      margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: const  Color(0xFFE1F3FF),
+        color: groupColors['color'],
         borderRadius: BorderRadius.circular(16)
       ),
       child: Column(
@@ -43,10 +102,10 @@ class ProjectCardProcess extends StatelessWidget {
                   width: 30,
                   height: 30,
                   decoration: BoxDecoration(
-                    color:group.iconColor,
+                    color: groupIconColors['color'],
                     borderRadius: BorderRadius.circular(8),
                   ),
-                  child:group.icon
+                  child:themedIcon
               ),
             ],
           ),
@@ -57,7 +116,7 @@ class ProjectCardProcess extends StatelessWidget {
             style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.bold,
-              color: theme.colorScheme.onSecondary,
+              color: Colors.black,
             ),
           ),
           const SizedBox(height: 20),
@@ -67,9 +126,9 @@ class ProjectCardProcess extends StatelessWidget {
             child: LinearProgressIndicator(
               value: projectEntity.tasks.length / 100,
               minHeight: 10,
-              backgroundColor: Colors.grey[300],
+              backgroundColor: Colors.white,
               valueColor: AlwaysStoppedAnimation<Color>(
-                  Color(0xFF0094FF)
+                  groupColors['processColor'] ?? Colors.white
               ),
             ),
           )
